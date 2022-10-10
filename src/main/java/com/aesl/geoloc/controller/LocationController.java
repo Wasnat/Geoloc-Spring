@@ -18,19 +18,23 @@ public class LocationController {
     @Autowired
     private LocationService locationService;
 
-
     @GetMapping("/viewAll")
     public List<Location> getAllLocations(){
         return locationService.getLocations();
     }
 
 
-    @GetMapping("/view")
-    public List<Location> getLocationById(){
-        return locationService.getNumberOfLocations();
+    @GetMapping("/view/{n}")
+    public List<Location> getLocationById(@PathVariable Integer n){
+        return locationService.getNumberOfLocations(n);
     }
 
 
+//    @GetMapping("/view/address")
+//    public Object getLocationAddress(@RequestBody LocationDto locationDto){
+//        return locationService.reverseLookup(locationDto.getLongitude(), locationDto.getLatitude());
+//    }
+//
     @PostMapping("/new")
     public ResponseEntity<?> saveNewLocation(@RequestBody LocationDto locationDto){
         return locationService.saveLocation(locationDto);
