@@ -5,6 +5,7 @@ import com.aesl.geoloc.dto.LocationDto;
 import com.aesl.geoloc.model.Location;
 import com.aesl.geoloc.service.LocationService;
 import org.hibernate.bytecode.internal.bytebuddy.BytecodeProviderImpl;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
@@ -37,7 +38,8 @@ public class LocationController {
 //
     @PostMapping("/new")
     public ResponseEntity<?> saveNewLocation(@RequestBody LocationDto locationDto){
-        return locationService.saveLocation(locationDto);
+//        return ResponseEntity.ok(new JSONObject(locationService.saveLocation(locationDto)));
+        return ResponseEntity.ok(locationService.saveLocation(locationDto));
 
     }
 
